@@ -28,7 +28,7 @@ class TestimonialController extends Controller
 
         return back()->with(
             'testimony_success',
-            'Terima kasih! Testimoni Anda akan tampil setelah disetujui.'
+            'Terima kasih! Testimoni Anda akan tampil.'
         );
     }
 }
