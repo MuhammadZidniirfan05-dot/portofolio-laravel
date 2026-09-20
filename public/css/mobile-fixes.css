@@ -1,18 +1,8 @@
 /* ============================================================
    MOBILE RESPONSIVE FIXES
-   File tambahan untuk memperbaiki tampilan di layar HP,
-   tanpa mengubah file style.css bawaan template.
    ============================================================ */
 
-/* ---------------------------------------------------------
-   1. HERO SECTION
-   Masalah asli: di layar <992px, teks (subheading, judul,
-   tombol) numpuk di atas foto tanpa latar pembeda, sehingga
-   kelihatan "nempel" di tengah foto dan sulit dibaca.
-   Solusi: kasih background gelap transparan di belakang teks,
-   posisikan di tengah, dan kecilkan tinggi hero supaya tidak
-   kepanjangan di HP.
---------------------------------------------------------- */
+/* 1. HERO SECTION */
 @media (max-width: 991.98px) {
     .owl-carousel.home-slider,
     .owl-carousel.home-slider .slider-item,
@@ -54,15 +44,7 @@
     }
 }
 
-/* ---------------------------------------------------------
-   2. ABOUT SECTION
-   Masalah asli: foto "About Me" tidak punya tinggi sendiri;
-   di desktop tingginya ikut menyesuaikan kolom teks di
-   sebelahnya (karena berdampingan), tapi begitu di HP kedua
-   kolom itu bertumpuk vertikal, foto jadi collapse ke 0px
-   dan hilang sama sekali.
-   Solusi: kasih tinggi minimum khusus untuk layar HP/tablet.
---------------------------------------------------------- */
+/* 2. ABOUT SECTION */
 @media (max-width: 767.98px) {
     .ftco-about .img-about,
     .ftco-about .img-about .img {
@@ -70,11 +52,7 @@
     }
 }
 
-/* ---------------------------------------------------------
-   3. HEADING SECTION (judul-judul seperti "My Skills",
-   "About Me", "Proyek Saya", dst)
-   Rapikan ukuran supaya tidak kebesaran di layar sempit.
---------------------------------------------------------- */
+/* 3. HEADING SECTION */
 @media (max-width: 575.98px) {
     .heading-section h2 {
         font-size: 24px !important;
@@ -84,11 +62,7 @@
     }
 }
 
-/* ---------------------------------------------------------
-   4. FOOTER
-   Rapikan perataan teks & ikon sosial media di HP supaya
-   simetris di tengah, bukan rata kiri yang terlihat acak.
---------------------------------------------------------- */
+/* 4. FOOTER */
 @media (max-width: 767.98px) {
     .ftco-footer .ftco-footer-widget {
         text-align: center;
@@ -102,43 +76,26 @@
     }
 }
 
-/* ---------------------------------------------------------
-   5. NAVBAR BRAND
-   Kecilkan sedikit ukuran judul website di navbar HP kecil
-   supaya tidak mepet dengan tombol menu.
---------------------------------------------------------- */
+/* 5. NAVBAR BRAND */
 @media (max-width: 575.98px) {
     .navbar-brand {
         font-size: 20px !important;
     }
 }
 
-/* ---------------------------------------------------------
-   11. NAVBAR BRAND — geser sedikit ke kanan dari tepi layar
---------------------------------------------------------- */
+/* 11. NAVBAR BRAND margin */
 .navbar-brand {
     margin-left: 12px;
 }
-
 @media (min-width: 992px) {
     .navbar-brand {
         margin-left: 20px;
     }
 }
 
-/* ---------------------------------------------------------
-   12. FOOTER REDESIGN
-   Ganti dari background hitam (#232931) jadi gradient warna
-   tema (primary + secondary), rapikan spacing, dan perbaiki
-   bug warna judul footer yang bisa hilang kalau text_color
-   di-set gelap (karena bentrok sama background gelap).
---------------------------------------------------------- */
+/* 12. FOOTER REDESIGN */
 .ftco-footer {
-    background: linear-gradient(
-        135deg,
-        var(--secondary-color, #1e293b) 0%,
-        var(--primary-color, #b1b493) 100%
-    ) !important;
+    background: #1d6fe0 !important;
     padding: 3em 0 1.5em !important;
     font-size: 14px;
 }
@@ -157,7 +114,6 @@
     line-height: 32px !important;
 }
 
-/* Perbaiki bug: judul footer paksa putih, jangan ikut text_color global */
 .ftco-footer .ftco-heading-2,
 .ftco-footer .ftco-footer-widget h2 {
     color: #fff !important;
@@ -217,13 +173,13 @@
     background: #fff !important;
 }
 .ftco-footer-social li a:hover span {
-    color: var(--primary-color, #b1b493) !important;
+    color: #1d6fe0 !important;
 }
 
 .ftco-footer .btn-primary {
     background: #fff !important;
     border-color: #fff !important;
-    color: var(--primary-color, #b1b493) !important;
+    color: #1d6fe0 !important;
     font-weight: 600;
 }
 .ftco-footer .btn-primary:hover {
@@ -231,24 +187,18 @@
     border-color: rgba(255, 255, 255, 0.85) !important;
 }
 
-/* Baris copyright paling bawah */
 .ftco-footer .row:last-child {
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-    padding-top: 22px;
-    margin-top: 8px;
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
 }
 .ftco-footer .row:last-child p {
-    color: rgba(255, 255, 255, 0.65);
+    color: rgba(255, 255, 255, 0.85);
     font-size: 14px;
     margin-bottom: 0;
 }
 
-/* ---------------------------------------------------------
-   18. HERO — tambal celah di titik pertemuan shape diagonal
-   Bug bawaan template: 2 kotak putih yang di-skew (miring)
-   dari atas & bawah kadang tidak pas 100% ketemu di tengah,
-   jadi ada celah kecil menampakkan warna foto di baliknya.
---------------------------------------------------------- */
+/* 18. HERO — tambal celah shape diagonal (JANGAN DIUBAH LAGI) */
 @media (min-width: 992px) {
     .owl-carousel.home-slider .slider-item .slider-text .one-third:before {
         content: "";
@@ -273,12 +223,7 @@
     }
 }
 
-/* ---------------------------------------------------------
-   13. PROJECT CARDS
-   Redesain dari background-image polos jadi kartu jelas:
-   gambar rapi, badge teknologi, judul, deskripsi, dan
-   tombol Demo + GitHub terpisah.
---------------------------------------------------------- */
+/* 13. PROJECT CARDS */
 .project-card {
     overflow: hidden;
     transition: all 0.3s ease;
@@ -288,7 +233,6 @@
     transform: translateY(-6px);
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1) !important;
 }
-
 .project-card-image {
     height: 200px;
     background-size: cover;
@@ -296,7 +240,6 @@
     background-repeat: no-repeat;
     position: relative;
 }
-
 .project-badge-featured {
     position: absolute;
     top: 12px;
@@ -310,7 +253,6 @@
     padding: 5px 12px;
     border-radius: 20px;
 }
-
 .project-tech {
     display: flex;
     flex-wrap: wrap;
@@ -328,7 +270,6 @@
     text-transform: uppercase;
     letter-spacing: 0.3px;
 }
-
 .project-title {
     font-size: 18px;
     font-weight: 700;
@@ -336,7 +277,6 @@
     margin: 0;
     text-align: center;
 }
-
 .project-desc {
     font-size: 14px;
     color: #777;
@@ -345,17 +285,12 @@
     text-align: justify;
     text-justify: inter-word;
 }
-
 .project-actions {
     gap: 8px;
     justify-content: center;
 }
 
-/* ---------------------------------------------------------
-   16. SERVICES CARDS — judul center, deskripsi justify,
-   TIDAK dipaksa sama tinggi (biar tidak ada ruang kosong
-   di card yang teksnya lebih pendek)
---------------------------------------------------------- */
+/* 16. SERVICES CARDS */
 #services-section .row {
     align-items: flex-start;
 }
@@ -371,25 +306,7 @@
     line-height: 1.7;
 }
 
-/* ---------------------------------------------------------
-   17. SKILLS CARDS — tinggi konsisten walau judul beda panjang
---------------------------------------------------------- */
-.progress-circle .col-lg-4 > div {
-    height: 100%;
-}
-.progress-circle h2.h5 {
-    min-height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* ---------------------------------------------------------
-   14. COUNTER SECTION — grid 2 kolom di HP
-   Sebelumnya di HP tampil 1 kolom memanjang ke bawah.
-   Sekarang jadi grid 2x2, icon & teks disusun vertikal
-   (bukan sejajar horizontal) biar muat rapi di kolom sempit.
---------------------------------------------------------- */
+/* 14. COUNTER SECTION */
 @media (max-width: 767.98px) {
     #section-counter .row {
         display: grid;
@@ -426,20 +343,15 @@
     }
 }
 
-/* ---------------------------------------------------------
-   15. CTA BANNER — di HP, foto disembunyikan total,
-   cukup tampilkan judul, deskripsi, dan tombol saja.
---------------------------------------------------------- */
+/* 15. CTA BANNER */
 @media (max-width: 767.98px) {
     .ftco-hireme {
         padding: 36px 0 !important;
     }
-
     .ftco-hireme .cta-mobile-image,
     .ftco-hireme .d-md-none {
         display: none !important;
     }
-
     .ftco-hireme .container .row {
         text-align: center;
     }
@@ -467,31 +379,14 @@
     border-radius: 6px;
 }
 
-/* ---------------------------------------------------------
-   6. SKILLS SECTION
-   Beri jarak lebih nyaman antar kartu skill di HP.
---------------------------------------------------------- */
-@media (max-width: 575.98px) {
-    .progress-circle .col-lg-4 {
-        margin-bottom: 16px;
-    }
-}
-
-/* ---------------------------------------------------------
-   7. TESTIMONY & FORM SUBMIT TESTIMONI
-   Rapikan padding form pengisian testimoni di layar sempit.
---------------------------------------------------------- */
+/* 7. TESTIMONY & FORM SUBMIT TESTIMONI */
 @media (max-width: 575.98px) {
     .testimony-section .bg-white.rounded-lg.shadow {
         padding: 24px 18px !important;
     }
 }
 
-/* ---------------------------------------------------------
-   8. EXPERIENCE TIMELINE
-   Desain baru untuk section "Pengalaman Kerja" karena
-   template asli tidak punya tampilan khusus untuk ini.
---------------------------------------------------------- */
+/* 8. EXPERIENCE TIMELINE */
 .exp-timeline {
     position: relative;
     padding-left: 36px;
@@ -538,9 +433,9 @@
     font-weight: 700;
     padding: 5px 14px;
     border-radius: 20px;
-    margin-bottom: 12px;
     text-transform: uppercase;
     letter-spacing: 1px;
+    margin-bottom: 12px;
 }
 .exp-timeline-content h3 {
     font-size: 20px;
@@ -575,10 +470,7 @@
     }
 }
 
-/* ---------------------------------------------------------
-   9. HERO SUBTITLE (Deskripsi Singkat) — bikin lebih rapi
-   dan menarik, dengan aksen garis warna mengikuti tema.
---------------------------------------------------------- */
+/* 9. HERO SUBTITLE — garis aksen kiri DIHAPUS */
 .owl-carousel.home-slider .slider-item .slider-text .text p {
     font-size: 18px;
     font-weight: 400;
@@ -587,34 +479,24 @@
     max-width: 480px;
     margin-bottom: 26px;
     letter-spacing: 0.2px;
-    padding-left: 18px;
-    border-left: 3px solid var(--primary-color, #b1b493);
 }
-
 @media (max-width: 991.98px) {
     .owl-carousel.home-slider .slider-item .slider-text .text p {
         color: rgba(255, 255, 255, 0.92);
         font-size: 15px;
         max-width: 100%;
         margin-bottom: 20px;
-        border-left-color: #fff;
     }
 }
 
-/* ---------------------------------------------------------
-   10. ABOUT ME — JUDUL & DESKRIPSI
-   Judul "My Intro" / "About Me" rata tengah.
-   Deskripsi rata kanan-kiri (justify), font sedikit lebih besar.
---------------------------------------------------------- */
+/* 10. ABOUT ME */
 #about-section .heading-section .subheading,
 #about-section .heading-section h2 {
     text-align: center;
 }
-
 #about-section .heading-section .subheading {
     font-size: 15px;
 }
-
 #about-section .about-description {
     text-align: justify;
     text-justify: inter-word;
@@ -624,16 +506,14 @@
     font-weight: 400;
     letter-spacing: 0.1px;
 }
-
 @media (max-width: 767.98px) {
     #about-section .about-description {
         font-size: 16px;
         line-height: 1.8;
     }
 }
-/* ---------------------------------------------------------
-   19. CONTACT CARDS (Email & WhatsApp) — desain baru
---------------------------------------------------------- */
+
+/* 19. CONTACT CARDS */
 .contact-email-card {
     background: #fff;
     border: 1px solid rgba(0, 0, 0, 0.06);
@@ -646,7 +526,6 @@
     transform: translateY(-4px);
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
 }
-
 .contact-email-icon {
     width: 56px;
     height: 56px;
@@ -655,7 +534,6 @@
     color: #fff;
     font-size: 20px;
 }
-
 .contact-email-link {
     display: inline-block;
     font-size: 15px;
@@ -668,18 +546,99 @@
     color: var(--primary-color, #b1b493);
     text-decoration: none;
 }
-
-/* Varian khusus WhatsApp — warna hijau khas WA supaya beda dari email */
 .contact-whatsapp-icon {
     background: #25d366;
 }
 .contact-whatsapp-card .contact-email-link:hover {
     color: #25d366;
 }
-
 @media (max-width: 767.98px) {
     .contact-email-card {
         padding: 22px 16px;
         margin-bottom: 18px !important;
+    }
+}
+
+/* 20. SKILLS — 3 skema warna bergantian: biru, kuning, putih */
+.skills-grid-v5 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+.skill-card5 {
+    border-radius: 14px;
+    padding: 26px 12px;
+    text-align: center;
+    transition: all 0.25s ease;
+}
+.skill-card5:hover {
+    transform: translateY(-4px);
+}
+.skill-card5-icon {
+    margin-bottom: 12px;
+}
+.skill-card5-icon i {
+    font-size: 28px;
+}
+.skill-card5-icon img {
+    width: 34px;
+    height: 34px;
+    object-fit: contain;
+    margin: 0 auto;
+    display: block;
+}
+.skill-card5-name {
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.skill-scheme-1 {
+    background: #1d6fe0;
+}
+.skill-scheme-1 .skill-card5-icon i,
+.skill-scheme-1 .skill-card5-name {
+    color: #fff;
+}
+.skill-scheme-1 .skill-card5-icon img {
+    filter: brightness(0) invert(1);
+}
+
+.skill-scheme-2 {
+    background: #f5b400;
+}
+.skill-scheme-2 .skill-card5-icon i,
+.skill-scheme-2 .skill-card5-name {
+    color: #fff;
+}
+.skill-scheme-2 .skill-card5-icon img {
+    filter: brightness(0) invert(1);
+}
+
+/* ---------------------------------------------------------
+   21. JARAK ANTAR SECTION — kecilkan padding default
+   Template asli pakai padding 7em di setiap section (.ftco-section),
+   kalau ditumpuk jaraknya jadi 14em (dobel). Dikecilkan jadi
+   lebih proporsional.
+--------------------------------------------------------- */
+.ftco-section {
+    padding: 4em 0 !important;
+}
+
+@media (max-width: 767.98px) {
+    .ftco-section {
+        padding: 3em 0 !important;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .skills-grid-v5 {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    .skill-card5 {
+        padding: 22px 10px;
+    }
+    .skill-card5-name {
+        font-size: 15px;
     }
 }
