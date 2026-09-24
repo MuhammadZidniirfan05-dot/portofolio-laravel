@@ -18,7 +18,7 @@
 	<link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/flaticon.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/mobile-fixes.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/mobile-fixes.css') }}">
 
 	{{-- Warna dinamis dari Site Settings (admin panel) --}}
 	<style>
@@ -53,6 +53,36 @@
 	<script src="{{ asset('js/jquery.animateNumber.min.js') }}"></script>
 	<script src="{{ asset('js/scrollax.min.js') }}"></script>
 	<script src="{{ asset('js/main.js') }}"></script>
+
+	<script>
+		// Sinkronisasi foto hero mobile (#hero-bg-mobile) dengan slide
+		// yang sedang aktif di carousel, supaya foto selalu full-bleed
+		// tanpa bergantung ke perhitungan lebar Owl Carousel.
+		(function () {
+			function syncHeroBg() {
+				var $bgLayer = jQuery('#hero-bg-mobile');
+				if ($bgLayer.length === 0) return;
+
+				jQuery('.home-slider').on('changed.owl.carousel translated.owl.carousel', function (e) {
+					var current = e.item ? e.item.index : 0;
+					var $activeSlide = jQuery(this).find('.owl-item.active .slider-item').first();
+
+					if ($activeSlide.length === 0) {
+						$activeSlide = jQuery(this).find('.slider-item').eq(current);
+					}
+
+					var bgUrl = $activeSlide.attr('data-slide-bg');
+					if (bgUrl) {
+						$bgLayer.css('background-image', 'url(' + bgUrl + ')');
+					}
+				});
+			}
+
+			if (typeof jQuery !== 'undefined') {
+				jQuery(document).ready(syncHeroBg);
+			}
+		})();
+	</script>
 
 	@stack('scripts')
 </body>

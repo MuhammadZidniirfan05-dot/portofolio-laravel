@@ -44,7 +44,15 @@
     }
 }
 
-/* 2. ABOUT SECTION */
+/* ---------------------------------------------------------
+   1B. RESET MARGIN BODY (aman, tidak sentuh internal carousel)
+   Jaga-jaga ada margin bawaan browser yang bikin celah tipis
+   di kiri-kanan semua konten, termasuk Hero.
+--------------------------------------------------------- */
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+}
 @media (max-width: 767.98px) {
     .ftco-about .img-about,
     .ftco-about .img-about .img {
@@ -90,6 +98,50 @@
 @media (min-width: 992px) {
     .navbar-brand {
         margin-left: 20px;
+    }
+}
+
+/* ---------------------------------------------------------
+   22. NAVBAR — ganti dari hitam (bg-dark bawaan Bootstrap)
+   jadi biru, KHUSUS layar kecil saja. Desktop tidak disentuh.
+--------------------------------------------------------- */
+@media (max-width: 991.98px) {
+    .navbar.bg-dark {
+        background: #1d6fe0 !important;
+        position: relative !important;
+    }
+    .navbar.bg-dark .navbar-brand {
+        color: #f5b400 !important;
+    }
+    .navbar.bg-dark .navbar-brand span {
+        color: #fff !important;
+    }
+    .navbar.bg-dark .navbar-toggler {
+        color: #fff !important;
+    }
+
+    /* Dropdown menu: background putih solid (menutupi biru dari <nav> induk),
+	   supaya pill biru per item kelihatan terpisah jelas */
+    .navbar.bg-dark .navbar-collapse {
+        background: #fff !important;
+        padding: 16px 0;
+    }
+    .navbar.bg-dark .navbar-nav {
+        align-items: flex-end;
+    }
+    .navbar.bg-dark .navbar-nav .nav-item {
+        text-align: right;
+    }
+    .navbar.bg-dark .navbar-nav .nav-link {
+        display: inline-block;
+        background: #1d6fe0;
+        color: #fff !important;
+        padding: 2px 6px;
+        border-radius: 0;
+        margin-bottom: 8px;
+    }
+    .navbar.bg-dark .navbar-nav .nav-link span {
+        color: #fff !important;
     }
 }
 
@@ -291,9 +343,6 @@
 }
 
 /* 16. SERVICES CARDS */
-#services-section .row {
-    align-items: flex-start;
-}
 .service-title {
     text-align: center;
     font-size: 18px;
@@ -304,6 +353,32 @@
     color: #777;
     font-size: 14px;
     line-height: 1.7;
+}
+
+/* Perbaiki: saat hover, deskripsi ikut jadi putih (bukan cuma judul) */
+.services:hover .service-desc {
+    color: rgba(255, 255, 255, 0.85) !important;
+}
+
+/* Perkecil ukuran card services */
+.services {
+    padding: 10px !important;
+    margin-bottom: 28px !important;
+}
+.services .icon {
+    width: 50px !important;
+    height: 50px !important;
+    margin-top: -35px !important;
+}
+.services .icon span {
+    font-size: 24px !important;
+}
+.services .media-body h3 {
+    font-size: 15px !important;
+    margin-bottom: 8px !important;
+}
+.service-desc {
+    line-height: 1.5 !important;
 }
 
 /* 14. COUNTER SECTION */
