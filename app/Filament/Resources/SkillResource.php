@@ -3,49 +3,89 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\SkillResource\Pages;
-use App\Filament\Resources\SkillResource\RelationManagers;
 use App\Models\Skill;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class SkillResource extends Resource
 {
     protected static ?string $model = Skill::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-academic-cap';
+
+    protected static ?string $navigationLabel = 'Skills';
+
+    protected static ?int $navigationSort = 6;
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(255),
+                Forms\Components\Section::make('Informasi Utama')
+                    ->schema([
+                        Forms\Components\TextInput::make('name')
+                            ->label('Nama Skill')
+                            ->required()
+                            ->maxLength(255)
+                            ->placeholder('Contoh: Laravel, Python, MySQL'),
 
-                Forms\Components\TextInput::make('level')
-                    ->required()
-                    ->numeric()
-                    ->minValue(0)
-                    ->maxValue(100)
-                    ->default(80)
-                    ->suffix('%')
-                    ->helperText('Isi angka 0-100 untuk persentase kemampuan'),
+                        Forms\Components\Select::make('category')
+                            ->label('Kategori')
+                            ->required()
+                            ->options([
+                                'Core Technologies'      => 'Core Technologies',
+                                'Frameworks & Libraries' => 'Frameworks & Libraries',
+                                'Database & IT Services' => 'Database & IT Services',
+                            ])
+                            ->default('Core Technologies')
+                            ->native(false)
+                            ->helperText('Pilih kategori skill'),
 
-                Forms\Components\FileUpload::make('icon')
-                    ->image()
-                    ->directory('skills')
-                    ->helperText('Upload icon/logo untuk skill ini (opsional)'),
+                        Forms\Components\TextInput::make('subtitle')
+                            ->label('Subtitle')
+                            ->maxLength(255)
+                            ->placeholder('Contoh: PHP Web Framework, Version Control'),
+                    ])
+                    ->columns(2),
 
-                Forms\Components\TextInput::make('order')
-                    ->required()
-                    ->numeric()
-                    ->default(0)
-                    ->helperText('Angka kecil akan tampil lebih dulu'),
+                // 🔧 DIUBAH: percentage & level DIHAPUS, hanya description
+                Forms\Components\Section::make('Deskripsi')
+                    ->schema([
+                        Forms\Components\Textarea::make('description')
+                            ->label('Deskripsi')
+                            ->rows(3)
+                            ->maxLength(500)
+                            ->placeholder('Contoh: MVC Architecture, Eloquent ORM, Routing, Security')
+                            ->columnSpanFull(),
+                    ]),
+
+                Forms\Components\Section::make('Icon & Urutan')
+                    ->schema([
+                        Forms\Components\FileUpload::make('icon')
+                            ->label('Icon Gambar')
+                            ->image()
+                            ->directory('skills')
+                            ->imageEditor()
+                            ->helperText('Upload icon/logo (opsional)')
+                            ->columnSpanFull(),
+
+                        Forms\Components\TextInput::make('icon_glyph')
+                            ->label('Icon Glyph (FontAwesome)')
+                            ->maxLength(255)
+                            ->placeholder('Contoh: fa-code, fa-database')
+                            ->helperText('Dikosongkan = auto-deteksi dari nama'),
+
+                        Forms\Components\TextInput::make('order')
+                            ->label('Urutan Tampil')
+                            ->required()
+                            ->numeric()
+                            ->default(0)
+                            ->helperText('Angka kecil tampil lebih dulu'),
+                    ])
+                    ->columns(2),
             ]);
     }
 
@@ -54,17 +94,45 @@ class SkillResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\ImageColumn::make('icon')
-                    ->label('Icon'),
+                    ->label('Icon')
+                    ->circular()
+                    ->defaultImageUrl(fn ($record) => null)
+                    ->size(40),
 
                 Tables\Columns\TextColumn::make('name')
-                    ->searchable(),
-
-                Tables\Columns\TextColumn::make('level')
-                    ->numeric()
+                    ->label('Nama')
+                    ->searchable()
                     ->sortable()
-                    ->suffix('%'),
+                    ->weight('bold'),
+
+                Tables\Columns\TextColumn::make('category')
+                    ->label('Kategori')
+                    ->badge()
+                    ->color(fn (string $state): string => match ($state) {
+                        'Core Technologies'      => 'info',
+                        'Frameworks & Libraries' => 'warning',
+                        'Database & IT Services' => 'success',
+                        default                  => 'gray',
+                    })
+                    ->searchable()
+                    ->sortable(),
+
+                Tables\Columns\TextColumn::make('subtitle')
+                    ->label('Subtitle')
+                    ->searchable()
+                    ->toggleable()
+                    ->limit(30),
+
+                // 🔧 DIUBAH: percentage diganti description
+                Tables\Columns\TextColumn::make('description')
+                    ->label('Deskripsi')
+                    ->limit(50)
+                    ->tooltip(fn ($record) => $record->description)
+                    ->searchable()
+                    ->toggleable(),
 
                 Tables\Columns\TextColumn::make('order')
+                    ->label('Urutan')
                     ->numeric()
                     ->sortable(),
 
@@ -80,7 +148,13 @@ class SkillResource extends Resource
             ])
             ->defaultSort('order')
             ->filters([
-                //
+                Tables\Filters\SelectFilter::make('category')
+                    ->label('Filter Kategori')
+                    ->options([
+                        'Core Technologies'      => 'Core Technologies',
+                        'Frameworks & Libraries' => 'Frameworks & Libraries',
+                        'Database & IT Services' => 'Database & IT Services',
+                    ]),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -103,9 +177,9 @@ class SkillResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListSkills::route('/'),
+            'index'  => Pages\ListSkills::route('/'),
             'create' => Pages\CreateSkill::route('/create'),
-            'edit' => Pages\EditSkill::route('/{record}/edit'),
+            'edit'   => Pages\EditSkill::route('/{record}/edit'),
         ];
     }
 }
