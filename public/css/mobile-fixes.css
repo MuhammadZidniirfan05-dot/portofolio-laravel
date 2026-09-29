@@ -1,8 +1,26 @@
 /* ============================================================
-   MOBILE RESPONSIVE FIXES
+   PORTFOLIO CSS — FINAL
+   Berisi:
+   - Mobile responsive fixes
+   - Hero / Footer / Navbar
+   - Projects / Services / Counter / CTA / Testimoni
+   - Experience Timeline
+   - About
+   - Contact (icon only, klikable)
+   - Skills (3 kolom desktop, 2 kolom mobile)
    ============================================================ */
 
-/* 1. HERO SECTION */
+/* ============================================================
+   1. RESET BODY
+   ============================================================ */
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* ============================================================
+   2. HERO SECTION
+   ============================================================ */
 @media (max-width: 991.98px) {
     .owl-carousel.home-slider,
     .owl-carousel.home-slider .slider-item,
@@ -44,67 +62,61 @@
     }
 }
 
-/* ---------------------------------------------------------
-   1B. RESET MARGIN BODY (aman, tidak sentuh internal carousel)
-   Jaga-jaga ada margin bawaan browser yang bikin celah tipis
-   di kiri-kanan semua konten, termasuk Hero.
---------------------------------------------------------- */
-body {
-    margin: 0 !important;
-    padding: 0 !important;
+/* Hero subtitle */
+.owl-carousel.home-slider .slider-item .slider-text .text p {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.8;
+    color: #444;
+    max-width: 480px;
+    margin-bottom: 26px;
+    letter-spacing: 0.2px;
 }
-@media (max-width: 767.98px) {
-    .ftco-about .img-about,
-    .ftco-about .img-about .img {
-        min-height: 280px;
+
+@media (max-width: 991.98px) {
+    .owl-carousel.home-slider .slider-item .slider-text .text p {
+        color: rgba(255, 255, 255, 0.92);
+        font-size: 15px;
+        max-width: 100%;
+        margin-bottom: 20px;
     }
 }
 
-/* 3. HEADING SECTION */
-@media (max-width: 575.98px) {
-    .heading-section h2 {
-        font-size: 24px !important;
-    }
-    .heading-section .subheading {
-        font-size: 12px;
-    }
-}
-
-/* 4. FOOTER */
-@media (max-width: 767.98px) {
-    .ftco-footer .ftco-footer-widget {
-        text-align: center;
-    }
-    .ftco-footer-social {
-        justify-content: center;
-        display: flex;
-    }
-    .block-23 ul li {
-        justify-content: center;
+/* Hero shape tambalan */
+@media (min-width: 992px) {
+    .owl-carousel.home-slider .slider-item .slider-text .one-third:before {
+        content: "";
+        position: absolute;
+        left: -7%;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 150px;
+        height: 16px;
+        background: #fff;
+        z-index: 1;
     }
 }
 
-/* 5. NAVBAR BRAND */
-@media (max-width: 575.98px) {
-    .navbar-brand {
-        font-size: 20px !important;
-    }
-}
-
-/* 11. NAVBAR BRAND margin */
+/* ============================================================
+   3. NAVBAR
+   ============================================================ */
 .navbar-brand {
     margin-left: 12px;
 }
+
 @media (min-width: 992px) {
     .navbar-brand {
         margin-left: 20px;
     }
 }
 
-/* ---------------------------------------------------------
-   22. NAVBAR — ganti dari hitam (bg-dark bawaan Bootstrap)
-   jadi biru, KHUSUS layar kecil saja. Desktop tidak disentuh.
---------------------------------------------------------- */
+@media (max-width: 575.98px) {
+    .navbar-brand {
+        font-size: 20px !important;
+    }
+}
+
+/* Navbar mobile: biru */
 @media (max-width: 991.98px) {
     .navbar.bg-dark {
         background: #1d6fe0 !important;
@@ -119,9 +131,6 @@ body {
     .navbar.bg-dark .navbar-toggler {
         color: #fff !important;
     }
-
-    /* Dropdown menu: background putih solid (menutupi biru dari <nav> induk),
-	   supaya pill biru per item kelihatan terpisah jelas */
     .navbar.bg-dark .navbar-collapse {
         background: #fff !important;
         padding: 16px 0;
@@ -145,137 +154,106 @@ body {
     }
 }
 
-/* 12. FOOTER REDESIGN */
-.ftco-footer {
-    background: #1d6fe0 !important;
-    padding: 3em 0 1.5em !important;
-    font-size: 14px;
-}
-
-.ftco-footer .row.mb-5 {
-    margin-bottom: 2rem !important;
-}
-
-.ftco-footer .ftco-footer-widget {
-    margin-bottom: 1.5rem !important;
-}
-
-.ftco-footer-social li a {
-    height: 32px !important;
-    width: 32px !important;
-    line-height: 32px !important;
-}
-
-.ftco-footer .ftco-heading-2,
-.ftco-footer .ftco-footer-widget h2 {
-    color: #fff !important;
-    font-size: 16px !important;
-    font-weight: 700 !important;
-    position: relative;
-    padding-bottom: 10px;
-    margin-bottom: 14px !important;
-}
-.ftco-footer .ftco-heading-2:after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 36px;
-    height: 2px;
-    background: rgba(255, 255, 255, 0.65);
-    border-radius: 3px;
-}
-
-.ftco-footer p,
-.ftco-footer .ftco-footer-widget p {
-    color: rgba(255, 255, 255, 0.8);
-    line-height: 1.7;
-    font-size: 14px;
-}
-
-.ftco-footer .ftco-footer-widget ul.list-unstyled li {
-    margin-bottom: 6px;
-}
-.ftco-footer .ftco-footer-widget ul.list-unstyled li a,
-.ftco-footer .ftco-footer-widget ul.list-unstyled li a span {
-    color: rgba(255, 255, 255, 0.75);
-    transition: all 0.25s ease;
-    font-size: 13px;
-}
-.ftco-footer .ftco-footer-widget ul.list-unstyled li a:hover {
-    color: #fff;
-    padding-left: 4px;
-}
-
-.ftco-footer .block-23 ul li a {
-    color: rgba(255, 255, 255, 0.85);
-}
-.ftco-footer .block-23 ul li a:hover {
-    color: #fff;
-}
-
-.ftco-footer-social li a {
-    background: rgba(255, 255, 255, 0.18) !important;
-    transition: all 0.25s ease;
-}
-.ftco-footer-social li a span {
-    color: #fff !important;
-}
-.ftco-footer-social li a:hover {
-    background: #fff !important;
-}
-.ftco-footer-social li a:hover span {
-    color: #1d6fe0 !important;
-}
-
-.ftco-footer .btn-primary {
-    background: #fff !important;
-    border-color: #fff !important;
-    color: #1d6fe0 !important;
-    font-weight: 600;
-}
-.ftco-footer .btn-primary:hover {
-    background: rgba(255, 255, 255, 0.85) !important;
-    border-color: rgba(255, 255, 255, 0.85) !important;
-}
-
-.ftco-footer .row:last-child {
-    border-top: none;
-    padding-top: 0;
-    margin-top: 0;
-}
-.ftco-footer .row:last-child p {
-    color: rgba(255, 255, 255, 0.85);
-    font-size: 14px;
-    margin-bottom: 0;
-}
-
-/* 18. HERO — tambal celah shape diagonal (JANGAN DIUBAH LAGI) */
-@media (min-width: 992px) {
-    .owl-carousel.home-slider .slider-item .slider-text .one-third:before {
-        content: "";
-        position: absolute;
-        left: -7%;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 150px;
-        height: 16px;
-        background: #fff;
-        z-index: 1;
+/* ============================================================
+   4. HEADING SECTION
+   ============================================================ */
+@media (max-width: 575.98px) {
+    .heading-section h2 {
+        font-size: 24px !important;
     }
+    .heading-section .subheading {
+        font-size: 12px;
+    }
+}
+
+/* ============================================================
+   5. SECTION PADDING (global)
+   ============================================================ */
+.ftco-section {
+    padding: 4em 0 !important;
 }
 
 @media (max-width: 767.98px) {
-    .ftco-footer {
-        padding: 2em 0 1em !important;
-    }
-    .ftco-footer .ftco-heading-2:after {
-        left: 50%;
-        transform: translateX(-50%);
+    .ftco-section {
+        padding: 3em 0 !important;
     }
 }
 
-/* 13. PROJECT CARDS */
+/* ============================================================
+   6. ABOUT SECTION
+   ============================================================ */
+#about-section .heading-section .subheading,
+#about-section .heading-section h2 {
+    text-align: center;
+}
+
+#about-section .heading-section .subheading {
+    font-size: 15px;
+}
+
+#about-section .about-description {
+    text-align: justify;
+    text-justify: inter-word;
+    font-size: 18px;
+    line-height: 1.9;
+    color: #555;
+    font-weight: 400;
+    letter-spacing: 0.1px;
+}
+
+@media (max-width: 767.98px) {
+    #about-section .about-description {
+        font-size: 16px;
+        line-height: 1.8;
+    }
+    .ftco-about .img-about,
+    .ftco-about .img-about .img {
+        min-height: 280px;
+    }
+}
+
+/* ============================================================
+   7. COUNTER SECTION
+   ============================================================ */
+@media (max-width: 767.98px) {
+    #section-counter .row {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px 12px;
+    }
+    #section-counter .col-md-3 {
+        width: 100%;
+        max-width: 100%;
+        flex: none;
+        padding: 0 8px;
+    }
+    #section-counter .block-18 {
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin-bottom: 0 !important;
+    }
+    #section-counter .icon {
+        margin-bottom: 10px;
+        margin-right: 0 !important;
+    }
+    #section-counter .text {
+        width: 100%;
+        padding-left: 0 !important;
+        text-align: center;
+    }
+    #section-counter .text .number {
+        font-size: 24px;
+    }
+    #section-counter .text span:not(.number) {
+        font-size: 12px;
+    }
+}
+
+/* ============================================================
+   8. PROJECTS
+   ============================================================ */
 .project-card {
     overflow: hidden;
     transition: all 0.3s ease;
@@ -341,26 +319,16 @@ body {
     gap: 8px;
     justify-content: center;
 }
-
-/* 16. SERVICES CARDS */
-.service-title {
-    text-align: center;
-    font-size: 18px;
-}
-.service-desc {
-    text-align: justify;
-    text-justify: inter-word;
-    color: #777;
-    font-size: 14px;
-    line-height: 1.7;
+.project-btn {
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 6px;
 }
 
-/* Perbaiki: saat hover, deskripsi ikut jadi putih (bukan cuma judul) */
-.services:hover .service-desc {
-    color: rgba(255, 255, 255, 0.85) !important;
-}
-
-/* Perkecil ukuran card services */
+/* ============================================================
+   9. SERVICES
+   ============================================================ */
 .services {
     padding: 10px !important;
     margin-bottom: 28px !important;
@@ -377,48 +345,182 @@ body {
     font-size: 15px !important;
     margin-bottom: 8px !important;
 }
+.service-title {
+    text-align: center;
+    font-size: 18px;
+}
 .service-desc {
+    text-align: justify;
+    text-justify: inter-word;
+    color: #777;
+    font-size: 14px;
     line-height: 1.5 !important;
 }
+.services:hover .service-desc {
+    color: rgba(255, 255, 255, 0.85) !important;
+}
+/* ============================================================
+   16. SERVICES SECTION — Mobile 2 Kolom
+   ============================================================ */
 
-/* 14. COUNTER SECTION */
-@media (max-width: 767.98px) {
-    #section-counter .row {
+/* Tablet: 2 kolom */
+@media (max-width: 991.98px) and (min-width: 576px) {
+    #services-section .row:last-of-type {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 24px 12px;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
     }
-    #section-counter .col-md-3 {
-        width: 100%;
-        max-width: 100%;
-        flex: none;
-        padding: 0 8px;
-    }
-    #section-counter .block-18 {
-        display: flex !important;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
+
+    #services-section .row:last-of-type > [class*="col-"] {
+        width: 100% !important;
+        max-width: 100% !important;
+        flex: none !important;
+        padding: 0 !important;
         margin-bottom: 0 !important;
-    }
-    #section-counter .icon {
-        margin-bottom: 10px;
-        margin-right: 0 !important;
-    }
-    #section-counter .text {
-        width: 100%;
-        padding-left: 0 !important;
-        text-align: center;
-    }
-    #section-counter .text .number {
-        font-size: 24px;
-    }
-    #section-counter .text span:not(.number) {
-        font-size: 12px;
     }
 }
 
-/* 15. CTA BANNER */
+/* Mobile: 2 kolom */
+@media (max-width: 767.98px) {
+    /* --- Container & Heading --- */
+    #services-section {
+        padding: 40px 0 !important;
+    }
+
+    #services-section .container {
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+    }
+
+    #services-section .heading-section {
+        margin-bottom: 30px !important;
+    }
+
+    #services-section .heading-section .subheading {
+        font-size: 11px !important;
+        display: block;
+        margin-bottom: 6px !important;
+    }
+
+    #services-section .heading-section h2 {
+        font-size: 22px !important;
+        margin-bottom: 0 !important;
+        line-height: 1.3;
+    }
+
+    /* --- Grid 2 kolom untuk kartu --- */
+    /* Ambil row terakhir (yang isinya kartu services) */
+    #services-section .row:last-of-type {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 12px !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    /* Reset semua col-* jadi auto */
+    #services-section .row:last-of-type > [class*="col-"] {
+        width: 100% !important;
+        max-width: 100% !important;
+        flex: none !important;
+        padding: 0 !important;
+        margin-bottom: 0 !important;
+    }
+
+    /* --- Kartu Services --- */
+    #services-section .services {
+        padding: 16px 10px 14px !important;
+        margin-bottom: 0 !important;
+        text-align: center !important;
+        height: 100% !important;
+        border-radius: 12px !important;
+        transition:
+            transform 0.25s ease,
+            box-shadow 0.25s ease;
+    }
+
+    #services-section .services:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Icon lebih kecil di mobile */
+    #services-section .services .icon {
+        width: 44px !important;
+        height: 44px !important;
+        margin-top: -28px !important;
+        margin-bottom: 12px !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    #services-section .services .icon span {
+        font-size: 20px !important;
+    }
+
+    /* Judul */
+    #services-section .service-title,
+    #services-section .media-body h3 {
+        font-size: 13px !important;
+        line-height: 1.3 !important;
+        margin-bottom: 6px !important;
+        text-align: center !important;
+        font-weight: 700;
+    }
+
+    /* Deskripsi */
+    #services-section .service-desc {
+        font-size: 11px !important;
+        line-height: 1.4 !important;
+        text-align: center !important;
+        color: #666 !important;
+        margin-bottom: 0 !important;
+        /* Batasi 3 baris */
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    /* Hover state */
+    #services-section .services:hover .service-desc {
+        color: rgba(255, 255, 255, 0.9) !important;
+    }
+}
+
+/* HP kecil */
+@media (max-width: 480px) {
+    #services-section .services {
+        padding: 14px 8px 12px !important;
+    }
+
+    #services-section .services .icon {
+        width: 40px !important;
+        height: 40px !important;
+        margin-top: -26px !important;
+    }
+
+    #services-section .services .icon span {
+        font-size: 18px !important;
+    }
+
+    #services-section .service-title,
+    #services-section .media-body h3 {
+        font-size: 12px !important;
+    }
+
+    #services-section .service-desc {
+        font-size: 10.5px !important;
+        -webkit-line-clamp: 3;
+    }
+}
+/* ============================================================
+   10. CTA BANNER
+   ============================================================ */
 @media (max-width: 767.98px) {
     .ftco-hireme {
         padding: 36px 0 !important;
@@ -444,24 +546,18 @@ body {
     }
 }
 
-.project-actions {
-    gap: 8px;
-}
-.project-btn {
-    font-size: 13px;
-    font-weight: 600;
-    padding: 8px 16px;
-    border-radius: 6px;
-}
-
-/* 7. TESTIMONY & FORM SUBMIT TESTIMONI */
+/* ============================================================
+   11. TESTIMONI
+   ============================================================ */
 @media (max-width: 575.98px) {
     .testimony-section .bg-white.rounded-lg.shadow {
         padding: 24px 18px !important;
     }
 }
 
-/* 8. EXPERIENCE TIMELINE */
+/* ============================================================
+   12. EXPERIENCE TIMELINE
+   ============================================================ */
 .exp-timeline {
     position: relative;
     padding-left: 36px;
@@ -545,104 +641,336 @@ body {
     }
 }
 
-/* 9. HERO SUBTITLE — garis aksen kiri DIHAPUS */
-.owl-carousel.home-slider .slider-item .slider-text .text p {
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 1.8;
-    color: #444;
-    max-width: 480px;
-    margin-bottom: 26px;
-    letter-spacing: 0.2px;
+/* ============================================================
+   13. FOOTER
+   ============================================================ */
+.ftco-footer {
+    background: #1d6fe0 !important;
+    padding: 3em 0 1.5em !important;
+    font-size: 14px;
 }
-@media (max-width: 991.98px) {
-    .owl-carousel.home-slider .slider-item .slider-text .text p {
-        color: rgba(255, 255, 255, 0.92);
-        font-size: 15px;
-        max-width: 100%;
-        margin-bottom: 20px;
-    }
+.ftco-footer .row.mb-5 {
+    margin-bottom: 2rem !important;
+}
+.ftco-footer .ftco-footer-widget {
+    margin-bottom: 1.5rem !important;
+}
+.ftco-footer-social li a {
+    height: 32px !important;
+    width: 32px !important;
+    line-height: 32px !important;
+}
+.ftco-footer .ftco-heading-2,
+.ftco-footer .ftco-footer-widget h2 {
+    color: #fff !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    position: relative;
+    padding-bottom: 10px;
+    margin-bottom: 14px !important;
+}
+.ftco-footer .ftco-heading-2:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 36px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.65);
+    border-radius: 3px;
+}
+.ftco-footer p,
+.ftco-footer .ftco-footer-widget p {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.7;
+    font-size: 14px;
+}
+.ftco-footer .ftco-footer-widget ul.list-unstyled li {
+    margin-bottom: 6px;
+}
+.ftco-footer .ftco-footer-widget ul.list-unstyled li a,
+.ftco-footer .ftco-footer-widget ul.list-unstyled li a span {
+    color: rgba(255, 255, 255, 0.75);
+    transition: all 0.25s ease;
+    font-size: 13px;
+}
+.ftco-footer .ftco-footer-widget ul.list-unstyled li a:hover {
+    color: #fff;
+    padding-left: 4px;
+}
+.ftco-footer .block-23 ul li a {
+    color: rgba(255, 255, 255, 0.85);
+}
+.ftco-footer .block-23 ul li a:hover {
+    color: #fff;
+}
+.ftco-footer-social li a {
+    background: rgba(255, 255, 255, 0.18) !important;
+    transition: all 0.25s ease;
+}
+.ftco-footer-social li a span {
+    color: #fff !important;
+}
+.ftco-footer-social li a:hover {
+    background: #fff !important;
+}
+.ftco-footer-social li a:hover span {
+    color: #1d6fe0 !important;
+}
+.ftco-footer .btn-primary {
+    background: #fff !important;
+    border-color: #fff !important;
+    color: #1d6fe0 !important;
+    font-weight: 600;
+}
+.ftco-footer .btn-primary:hover {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border-color: rgba(255, 255, 255, 0.85) !important;
+}
+.ftco-footer .row:last-child {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+}
+.ftco-footer .row:last-child p {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 14px;
+    margin-bottom: 0;
 }
 
-/* 10. ABOUT ME */
-#about-section .heading-section .subheading,
-#about-section .heading-section h2 {
-    text-align: center;
-}
-#about-section .heading-section .subheading {
-    font-size: 15px;
-}
-#about-section .about-description {
-    text-align: justify;
-    text-justify: inter-word;
-    font-size: 18px;
-    line-height: 1.9;
-    color: #555;
-    font-weight: 400;
-    letter-spacing: 0.1px;
-}
 @media (max-width: 767.98px) {
-    #about-section .about-description {
-        font-size: 16px;
-        line-height: 1.8;
+    .ftco-footer {
+        padding: 2em 0 1em !important;
+    }
+    .ftco-footer .ftco-heading-2:after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .ftco-footer .ftco-footer-widget {
+        text-align: center;
+    }
+    .ftco-footer-social {
+        justify-content: center;
+        display: flex;
+    }
+    .block-23 ul li {
+        justify-content: center;
     }
 }
 
-/* 19. CONTACT CARDS */
-.contact-email-card {
-    background: #fff;
-    border: 1px solid rgba(0, 0, 0, 0.06);
+/* ============================================================
+   14. CONTACT SECTION
+   ============================================================ */
+
+/* Desktop: icon bulat + teks */
+.contact-info-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+    padding: 22px 18px;
     border-radius: 12px;
-    padding: 26px 20px;
-    transition: all 0.3s ease;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.06);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+    text-decoration: none;
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+    margin-bottom: 16px;
 }
-.contact-email-card:hover {
+.contact-info-item:hover {
     transform: translateY(-4px);
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+    text-decoration: none;
 }
-.contact-email-icon {
+.contact-info-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+.contact-info-icon {
+    flex-shrink: 0;
     width: 56px;
     height: 56px;
     border-radius: 50%;
-    background: var(--primary-color, #b1b493);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: #fff;
-    font-size: 20px;
+    font-size: 22px;
+    transition: transform 0.25s ease;
 }
-.contact-email-link {
-    display: inline-block;
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--text-color, #000000);
-    word-break: break-word;
-    transition: color 0.25s ease;
+.contact-info-item:hover .contact-info-icon {
+    transform: scale(1.08);
 }
-.contact-email-link:hover {
-    color: var(--primary-color, #b1b493);
-    text-decoration: none;
+.contact-info-icon-email {
+    background: #1d6fe0;
 }
-.contact-whatsapp-icon {
+.contact-info-icon-wa {
     background: #25d366;
 }
-.contact-whatsapp-card .contact-email-link:hover {
-    color: #25d366;
+.contact-info-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
+.contact-info-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #94a3b8;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+.contact-info-value {
+    font-size: 14px;
+    font-weight: 700;
+    color: #d97706;
+    word-break: break-word;
+    line-height: 1.4;
+    transition: color 0.25s ease;
+}
+.contact-info-item:hover .contact-info-value {
+    color: #1d6fe0;
+}
+.contact-info-item-wa:hover .contact-info-value {
+    color: #128c7e;
+}
+
+/* Contact Mobile */
 @media (max-width: 767.98px) {
-    .contact-email-card {
-        padding: 22px 16px;
-        margin-bottom: 18px !important;
+    #contact-section {
+        padding-top: 16px !important;
+        padding-bottom: 16px !important;
+    }
+    #contact-section .container {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+    #contact-section .heading-section {
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+    }
+    #contact-section .heading-section .subheading {
+        display: block;
+        margin-bottom: 4px !important;
+        font-size: 11px;
+    }
+    #contact-section .heading-section h2 {
+        margin-bottom: 0 !important;
+        font-size: 24px;
+        font-weight: 800;
+    }
+    #contact-section .row.justify-content-center.mb-5,
+    #contact-section .row.justify-content-center.pb-3 {
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+    }
+    #contact-section .row.block-9 {
+        margin-bottom: 0 !important;
+        margin-top: 0 !important;
+    }
+
+    .contact-block-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 0 !important;
+    }
+    .contact-form-col {
+        order: 2;
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
+    .contact-info-col {
+        order: 1;
+        padding-left: 8px !important;
+        padding-right: 8px !important;
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+    }
+    .contact-info-row {
+        flex-direction: row;
+        justify-content: center;
+        gap: 10px;
+        align-items: center;
+        margin-top: 14px;
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .contact-info-item {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        border-radius: 0;
+        cursor: pointer;
+        margin-bottom: 0;
+    }
+    .contact-info-item:hover {
+        transform: translateY(-3px);
+        box-shadow: none;
+    }
+    .contact-info-icon {
+        width: 38px;
+        height: 38px;
+        font-size: 15px;
+    }
+    .contact-info-text,
+    .contact-info-label,
+    .contact-info-value {
+        display: none !important;
+    }
+    .contact-social-wrapper {
+        display: none !important;
+    }
+    .contact-form {
+        padding: 16px !important;
+        margin-top: 0 !important;
+        background: #f8f9fa !important;
+        border-radius: 12px;
+    }
+    .contact-form .form-group {
+        margin-bottom: 8px !important;
+    }
+    .contact-form .form-control {
+        padding: 10px 14px !important;
+        font-size: 13px !important;
+        border-radius: 6px !important;
+        border: 1px solid #d1d5db !important;
+    }
+    .contact-form .form-control:focus {
+        border-color: #1d6fe0 !important;
+        box-shadow: 0 0 0 3px rgba(29, 111, 224, 0.1) !important;
+    }
+    .contact-form textarea.form-control {
+        min-height: 100px !important;
+    }
+    .contact-form .btn {
+        padding: 12px 24px !important;
+        font-size: 14px !important;
+        border-radius: 6px !important;
+        width: 100%;
     }
 }
 
-/* ============================================
-   SKILLS SECTION — v3 (Polish + Mobile Center)
-   ============================================ */
+/* ============================================================
+   15. SKILLS SECTION
+   Desktop: 3 kolom | Tablet: 2 kolom | Mobile: 2 kolom
+   ============================================================ */
 
-/* ============ SECTION ============ */
 .skills-section {
     background: linear-gradient(180deg, #f8f9fa 0%, #eef2f7 100%);
     padding: 70px 0;
-    /* 🔧 BARU: pastikan konten di tengah */
     display: flex;
     justify-content: center;
 }
@@ -662,13 +990,12 @@ body {
     text-align: center;
 }
 
-/* ============ GRID 3 KOLOM ============ */
+/* Grid desktop: 3 kolom */
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 28px;
     align-items: start;
-    /* 🔧 BARU: pastikan grid center */
     width: 100%;
     margin: 0 auto;
 }
@@ -679,14 +1006,13 @@ body {
     gap: 18px;
 }
 
-/* ============ HEADER KATEGORI (dengan aksen warna) ============ */
+/* Header kategori */
 .category-header {
     display: flex;
     align-items: center;
     gap: 10px;
     margin-bottom: 4px;
     padding: 10px 14px;
-    /* 🔧 BARU: aksen background */
     background: linear-gradient(135deg, #e8f0fe 0%, #dbeafe 100%);
     border-left: 4px solid #1d6fe0;
     border-radius: 8px;
@@ -706,7 +1032,7 @@ body {
     margin: 0;
 }
 
-/* ============ KARTU SKILL ============ */
+/* Kartu skill */
 .skill-card {
     background: #ffffff;
     border-radius: 14px;
@@ -715,7 +1041,6 @@ body {
     gap: 16px;
     min-height: 100px;
     align-items: flex-start;
-    /* 🔧 BARU: shadow lebih lembut + border kiri aksen */
     box-shadow: 0 4px 16px rgba(29, 111, 224, 0.06);
     border: 1px solid #eef0f3;
     border-left: 4px solid #1d6fe0;
@@ -727,7 +1052,6 @@ body {
     overflow: hidden;
 }
 
-/* 🔧 BARU: efek glow di pojok kanan atas */
 .skill-card::before {
     content: "";
     position: absolute;
@@ -750,7 +1074,7 @@ body {
     border-left-color: #f5b400;
 }
 
-/* ============ IKON (dengan background circle) ============ */
+/* Icon box */
 .skill-icon-box {
     flex-shrink: 0;
     width: 52px;
@@ -758,7 +1082,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* 🔧 BARU: background circle */
     background: linear-gradient(135deg, #f0f7ff 0%, #e0eeff 100%);
     border-radius: 12px;
     box-shadow: inset 0 1px 3px rgba(29, 111, 224, 0.1);
@@ -775,7 +1098,7 @@ body {
     color: #1d6fe0;
 }
 
-/* ============ KONTEN ============ */
+/* Konten */
 .skill-content {
     flex-grow: 1;
     min-width: 0;
@@ -806,7 +1129,6 @@ body {
     margin: 0;
 }
 
-/* 🔧 DIUBAH: font deskripsi diperbesar dari 11.5px → 13px */
 .skill-desc {
     font-size: 13px;
     color: #4a5568;
@@ -814,104 +1136,161 @@ body {
     margin: 4px 0 0 0;
 }
 
-/* ============ RESPONSIVE ============ */
+/* Tablet: 2 kolom */
 @media (max-width: 991px) {
     .skills-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-/* 🔧 DIUBAH: Mobile — center + full width */
+/* ============================================
+   🔧 MOBILE: 2 KOLOM SKILL, KONTEN CENTER
+   ============================================ */
 @media (max-width: 768px) {
     .skills-section {
-        padding: 50px 0;
-        display: block;
+        padding: 40px 0;
     }
 
     .skills-section .container {
-        padding: 0 16px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        padding: 0 12px;
     }
 
     .skills-main-title {
-        font-size: 32px;
+        font-size: 28px;
+        margin-bottom: 20px;
         text-align: center;
     }
 
+    /* Grid: 1 kolom untuk wrapper kategori */
     .skills-grid {
         grid-template-columns: 1fr;
-        width: 100%;
-        max-width: 500px;
-        margin: 0 auto;
         gap: 20px;
+        justify-items: center; /* 🔧 BARU: center grid */
     }
 
+    /* Setiap kategori: grid 2 kolom, isi center */
     .skill-category {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
         width: 100%;
-        align-items: stretch;
+        justify-items: center; /* 🔧 BARU: center kartu di dalam kategori */
     }
 
-    .skill-card {
+    /* Header kategori full width, center */
+    .skill-category .category-header {
+        grid-column: 1 / -1;
+        justify-content: center; /* 🔧 center icon + teks */
+        text-align: center;
+        padding: 8px 12px;
         width: 100%;
-        padding: 16px 18px;
     }
 
-    .category-header {
-        justify-content: center;
-    }
-}
-
-/* 🔧 BARU: HP kecil */
-@media (max-width: 480px) {
-    .skills-main-title {
-        font-size: 28px;
+    .category-header i {
+        font-size: 16px;
     }
 
+    .category-header h3 {
+        font-size: 12px;
+    }
+
+    /* Kartu skill: center semua konten */
     .skill-card {
-        padding: 14px 16px;
-        gap: 12px;
+        padding: 14px 10px;
+        gap: 8px;
+        min-height: auto;
+        flex-direction: column;
+        align-items: center; /* 🔧 BARU: center horizontal */
+        justify-content: center; /* 🔧 BARU: center vertical */
+        text-align: center; /* 🔧 BARU: center teks */
+        border-radius: 12px;
+        width: 100%;
     }
 
     .skill-icon-box {
         width: 44px;
         height: 44px;
+        border-radius: 10px;
+        margin: 0 auto; /* 🔧 BARU: center icon box */
+    }
+
+    .skill-icon-box i {
+        font-size: 20px;
+    }
+
+    .skill-icon-box img {
+        width: 55%;
+        height: 55%;
+        margin: 0 auto;
+    }
+
+    .skill-content {
+        gap: 2px;
+        width: 100%;
+        align-items: center; /* 🔧 BARU: center konten teks */
+        text-align: center; /* 🔧 BARU */
+    }
+
+    .skill-header {
+        justify-content: center; /* 🔧 BARU: center judul */
+        text-align: center;
+        width: 100%;
     }
 
     .skill-title {
-        font-size: 16px;
+        font-size: 14px;
+        line-height: 1.2;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .skill-subtitle {
+        font-size: 11px;
+        line-height: 1.3;
+        text-align: center;
     }
 
     .skill-desc {
-        font-size: 12.5px;
-    }
-}
-/* ---------------------------------------------------------
-   21. JARAK ANTAR SECTION — kecilkan padding default
-   Template asli pakai padding 7em di setiap section (.ftco-section),
-   kalau ditumpuk jaraknya jadi 14em (dobel). Dikecilkan jadi
-   lebih proporsional.
---------------------------------------------------------- */
-.ftco-section {
-    padding: 4em 0 !important;
-}
-
-@media (max-width: 767.98px) {
-    .ftco-section {
-        padding: 3em 0 !important;
+        font-size: 10.5px;
+        line-height: 1.4;
+        margin-top: 2px;
+        text-align: center; /* 🔧 BARU: center deskripsi */
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
     }
 }
 
-@media (max-width: 767.98px) {
-    .skills-grid-v5 {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
+/* HP kecil */
+@media (max-width: 480px) {
+    .skills-main-title {
+        font-size: 24px;
     }
-    .skill-card5 {
-        padding: 22px 10px;
+
+    .skill-card {
+        padding: 12px 8px;
     }
-    .skill-card5-name {
-        font-size: 15px;
+
+    .skill-icon-box {
+        width: 40px;
+        height: 40px;
+    }
+
+    .skill-icon-box i {
+        font-size: 18px;
+    }
+
+    .skill-title {
+        font-size: 13px;
+    }
+
+    .skill-subtitle {
+        font-size: 10px;
+    }
+
+    .skill-desc {
+        font-size: 10px;
+        -webkit-line-clamp: 2;
     }
 }
