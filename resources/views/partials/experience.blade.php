@@ -33,40 +33,7 @@
 	</div>
 </section>
 
-{{-- ============ SECTION EXPERIENCE ============ --}}
-<section class="ftco-section bg-light" id="experience-section">
-	<div class="container">
-		<div class="row justify-content-center pb-3">
-			<div class="col-md-7 heading-section text-center ftco-animate">
-				<span class="subheading">Resume</span>
-				<h2 class="mb-4">Pengalaman Kerja</h2>
-			</div>
-		</div>
 
-		<div class="exp-scroll-wrapper">
-			<div class="exp-scroll">
-				@forelse($experiences as $exp)
-					<div class="exp-slide">
-						<div class="exp-card">
-							<span class="exp-period">
-								{{ $exp->start_date->format('M Y') }} &mdash; {{ $exp->end_date ? $exp->end_date->format('M Y') : 'Sekarang' }}
-							</span>
-							<h3 class="exp-position">{{ $exp->position }}</h3>
-							<h4 class="exp-company">{{ $exp->company }}</h4>
-							@if($exp->description)
-								<p class="exp-desc">{{ $exp->description }}</p>
-							@endif
-						</div>
-					</div>
-				@empty
-					<div class="text-center w-100">
-						<p>Belum ada riwayat pengalaman kerja.</p>
-					</div>
-				@endforelse
-			</div>
-		</div>
-	</div>
-</section>
 
 <style>
 	/* ============================================================
