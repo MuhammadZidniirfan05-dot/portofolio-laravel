@@ -1,10 +1,12 @@
-{{-- 🔧 DIUBAH TOTAL: section skills 3 kolom kategori, tanpa persentase --}}
-<section class="skills-section" id="skills-section">
+{{-- 🔧 SECTION SKILLS: Lebih rapat ke atas --}}
+<section class="skills-section" id="skills-section" style="padding-top: 20px;">
     <div class="container">
-        <div class="row justify-content-center pb-4">
+        {{-- PERUBAHAN: pb-4 → pb-2, jarak ke grid lebih rapat --}}
+        <div class="row justify-content-center pb-2">
             <div class="col-md-12 heading-section text-center ftco-animate">
                 <span class="subheading">Skills</span>
-                <h2 class="mb-4 skills-main-title">My Skills</h2>
+                {{-- PERUBAHAN: mb-4 → mb-3, heading lebih rapat ke grid --}}
+                <h2 class="mb-3 skills-main-title">My Skills</h2>
             </div>
         </div>
 
@@ -51,3 +53,32 @@
         </div>
     </div>
 </section>
+
+<style>
+	/* ====== SKILLS SECTION: Padding HP ====== */
+	@media (max-width: 767px) {
+		#skills-section {
+			padding: 15px 0 30px 0 !important;
+			margin: 0 !important;
+			background: #fff !important;
+		}
+		#skills-section .container {
+			padding: 0 !important;
+			margin: 0 !important;
+		}
+		#skills-section .row {
+			margin: 0 !important;
+			padding: 0 !important;
+		}
+		#skills-section .heading-section {
+			margin-bottom: 10px !important;
+			padding-bottom: 0 !important;
+		}
+		#skills-section .heading-section h2 {
+			margin-bottom: 0 !important;
+		}
+		#skills-section .pb-4 {
+			padding-bottom: 0 !important;
+		}
+	}
+</style>
